@@ -29,4 +29,7 @@ public class ChatMessage {
     @Column(name = "time_stamp")
     private LocalDateTime timeStamp;
 
+    @Column(name = "is_read")
+    private Boolean isRead;
+
 }

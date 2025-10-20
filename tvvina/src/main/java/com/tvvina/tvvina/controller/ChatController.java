@@ -5,6 +5,7 @@ import com.tvvina.tvvina.domain.ChatMessage;
 import com.tvvina.tvvina.respository.ChatMessageRepository;
 import com.tvvina.tvvina.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ChatController {
@@ -82,6 +84,17 @@ public class ChatController {
                 "/queue/messages",
                 message
         );
+    }
+    // Đếm tin chưa đọc
+    @GetMapping("/api/chat/unread-count")
+    public long getUnreadCount(@RequestParam String receiver) {
+        return messageRepository.countByReceiverAndIsReadFalse(receiver);
+    }
+    // Khi user mở box chat → đánh dấu tất cả tin nhắn chưa đọc là đã đọc
+    @PostMapping("/api/chat/mark-read")
+    public ResponseEntity<?> markRead(@RequestParam String username) {
+        int updated = chatService.markMessagesAsRead(username);
+        return ResponseEntity.ok(Map.of("updated", updated));
     }
 }
 

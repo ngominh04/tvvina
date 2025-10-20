@@ -36,6 +36,10 @@ public class ChatService {
                 .distinct()
                 .collect(Collectors.toList());
     }
+    // Đánh dấu tất cả tin nhắn chưa đọc của user là đã đọc
+    public int markMessagesAsRead(String username) {
+        return chatMessageRepository.markAsRead(username);
+    }
 }
 
 
