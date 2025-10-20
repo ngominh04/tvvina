@@ -1,0 +1,42 @@
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: 44444ace@gmail.com
+#    password: qzxc pqik tdog brxu
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+  application:
+    name: "tvvina"
+  datasource:
+    url: jdbc:mysql://localhost:3306/tvvina
+    username: root
+    password: "041103"
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+#upload:
+#  dir: "src/main/resources/static/file/"
+logging:
+  level:
+    root: info
+    org.springframework.security: DEBUG        # Xem chi tiết các rule Security (ai bị chặn / cho phép)
+    org.springframework.web.servlet.resource: DEBUG  # Log khi Spring phục vụ file tĩnh (ảnh, CSS, JS...)
+    org.springframework.web.servlet.DispatcherServlet: DEBUG  # Log mapping và xử lý request
+    org.springframework.web.cors: DEBUG         # Log thông tin CORS (quan trọng khi gọi từ React)
+
+
+
+
+
