@@ -56,6 +56,7 @@ public class RecruitController {
             @RequestParam("allowance") String allowance,
             @RequestParam("note") String note,
             @RequestParam("quantityTaken") Integer quantityTaken,
+            @RequestParam("isDelete") Integer isDelete,
             @RequestParam(value = "imageFile", required = false) MultipartFile imageFile
     ) {
         try {
@@ -66,7 +67,7 @@ public class RecruitController {
             recruit.setAllowance(allowance);
             recruit.setNote(note);
             recruit.setQuantityTaken(quantityTaken);
-
+            recruit.setIsDelete(isDelete);
             // ✅ Nếu có file ảnh thì lưu
             if (imageFile != null && !imageFile.isEmpty()) {
                 String uploadDir = "uploads/imageFiles/";
@@ -101,6 +102,7 @@ public class RecruitController {
             @RequestParam("allowance") String allowance,
             @RequestParam("note") String note,
             @RequestParam("quantityTaken") Integer quantityTaken,
+            @RequestParam("isDelete") Integer isDelete,
             @RequestParam(value = "imageFile", required = false) MultipartFile imageFile
     ) {
         try {
@@ -111,6 +113,7 @@ public class RecruitController {
             existing.setAllowance(allowance);
             existing.setNote(note);
             existing.setQuantityTaken(quantityTaken);
+            existing.setIsDelete(isDelete);
 
             // Nếu có file ảnh mới → ghi đè
             if (imageFile != null && !imageFile.isEmpty()) {

@@ -41,8 +41,9 @@ public class ChatController {
 
         // Lưu tin nhắn
         message.setTimeStamp(LocalDateTime.now());
+        message.setIsRead(false);
         chatService.saveMessage(message);
-        System.out.println("Received message: " + message.getSender() + " -> " + message.getReceiver());
+        System.out.println("Received message: " + message.getSender() + " -> " + message.getReceiver()+" - trang thai :"+message.getIsRead());
 
 
         // Gửi tin nhắn tới receiver
@@ -76,6 +77,7 @@ public class ChatController {
 
         // save message
         message.setTimeStamp(LocalDateTime.now());
+        message.setIsRead(false);
         chatService.saveMessage(message);
         System.out.println("Received message: " + message.getSender() + " -> " + message.getReceiver());
 
